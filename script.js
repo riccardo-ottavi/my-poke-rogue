@@ -14,6 +14,7 @@ const pokemonGen1 = [
 const endPoint = "https://pokeapi.co/api/v2/pokemon/";
 const pokeBall = document.querySelector(".img-centered")
 const gameDisplay = document.getElementById("game-display");
+const startingLvl = 5;
 
 //---------------main----------------
 pokeballEvent();
@@ -90,15 +91,16 @@ function displayPokemonInfos(pokemon){
                         <img src="${pokemon.sprites.front_default}" alt="">
                     </div>
                     <div class="card-stats">
-                        <span class="card-name">${pokemon.name}</span>
-                        <span class="first-type">${pokemon.types[0].type.name}</span>
-                        <span class="second-type">${pokemon.types[0].type.name}</span>
+                        <p class="card-name">Nome: ${pokemon.name}</p>
+                        <p class="card-lvl">Livello: ${startingLvl}</p>
+                        <p class="card-first-type">Tipo ${pokemon.types[0].type.name}</p>
+                        <p class="card-second-type">${pokemon.types[0].type.name}</p>
+                        <p class="card-ability">Abilità ${pokemon.abilities[randomizedElement(pokemon.abilities)].ability.name}</p>
+                        <div class="card-moves">
+                        <p>MOSSE</p>
+                        <p class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</p>
+                        <p class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</p>
                     </div>
-                    <div class="card-moves">
-                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
-                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
-                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
-                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
                     </div>
                 </div>
 

@@ -92,9 +92,10 @@ body {
 }
 
 .card {
-    height: 70%;
-    width: 70%;
+    height: 40%;
+    width: 40%;
     border: solid black 1px;
+    display: flex;
 }
 .card img{
     height: 200px;
