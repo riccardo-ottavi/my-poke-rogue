@@ -95,12 +95,19 @@ function displayPokemonInfos(pokemon){
                         <span class="second-type">${pokemon.types[0].type.name}</span>
                     </div>
                     <div class="card-moves">
-                        <span class="card-moves">${pokemon.moves[0].move.name}</span>
-                        <span class="card-moves">${pokemon.moves[1].move.name}</span>
-                        <span class="card-moves">${pokemon.moves[2].move.name}</span>
-                        <span class="card-moves">${pokemon.moves[3].move.name}</span>
+                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
+                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
+                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
+                        <span class="card-moves">${pokemon.moves[randomizedElement(pokemon.moves)].move.name}</span>
                     </div>
                 </div>
 
     `
 }
+
+
+function randomizedElement(array){
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return randomIndex;
+}
+
