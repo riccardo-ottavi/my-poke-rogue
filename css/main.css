@@ -20,6 +20,21 @@ body {
     gap: 15px;
 }
 
+#bottom-screen {
+    height: 100px;
+    width: 80%;
+    margin-top: 15px;
+    margin-left: 40px;
+    display: flex;
+    gap: 30px;
+}
+
+#inventory{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
 .team-card{
     border-radius: 33px;
     height: calc(100% / 6);
@@ -33,6 +48,7 @@ body {
 #main-container {
     display: flex;
     margin-top: 14px;
+    margin-left: 14px;
 }
 
 #game-display {
@@ -40,5 +56,23 @@ body {
     height: 80%;
     background-color: white;
     margin-left: 40px;
-    margin-top: 80px;
 }
+
+#buttons-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+}
+
+.button {
+    border: 1px black solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 33px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+}
+
