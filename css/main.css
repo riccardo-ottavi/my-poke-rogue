@@ -65,6 +65,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
 }
 
 #buttons-box {
@@ -87,6 +88,6 @@ body {
 
 #small-display {
     position: absolute;
-    top: 20px;
+    top: 0;
 }
 
