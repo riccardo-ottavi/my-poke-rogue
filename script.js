@@ -12,14 +12,41 @@ const pokemonGen1 = [
 ];
 
 const endPoint = "https://pokeapi.co/api/v2/pokemon/";
-
+const pokeBall = document.querySelector(".img-centered")
+const gameDisplay = document.getElementById("game-display");
 
 //---------------main----------------
-getRandomPokemon(pokemonGen1);
+pokeballEvent();
 
+//evento iniziale pokeBall
+pokeBall.addEventListener("click",
+    function(evento) {
+        evento.preventDefault()
+        //la ball scompare
+        pokeBall.setAttribute("style","display:none");
+        //compare lo starter
+        getRandomPokemon(pokemonGen1)
+        .then(starter => {
+        console.log(starter);
+        displayPokemonInfos(starter);
+    });
+
+    }
+)
 
 
 //---------------funzioni----------------
+
+//pokeball event handler
+function pokeballEvent() {
+    pokeBall.addEventListener("click",
+        function (evento) {
+            evento.preventDefault()
+            //la ball scompare
+            pokeBall.setAttribute("style", "display:none");
+        }
+    )
+}
 
 //prende dall'elenco dei pokemon disponibili la stringa col nome da passare ad axios
 function getRandomPokemonName(pokemonNamesList) {
@@ -36,15 +63,16 @@ function getRandomPokemonName(pokemonNamesList) {
 function getRandomPokemon(pokemonNamesList) {
     //chiama la funzione che prende una stringa a caso dall'elenco pokemon
     const randomName = getRandomPokemonName(pokemonNamesList);
-    callAxios(randomName);
+    console.log(randomName);
+   
+    return  callAxios(randomName)
 }
 
 //gestisce la chiamata ad Axios
 function callAxios(pokemonName) {
-    axios.get(endPoint + pokemonName)
+    return axios.get(endPoint + pokemonName)
         //se la chiamata è riuscita salvo il risultato
         .then(response => {
-            console.log("ci siamoooo");
             const pokemonData = response.data;
             console.log(pokemonData);
             return pokemonData;
@@ -52,4 +80,27 @@ function callAxios(pokemonName) {
         .catch(error => {
             console.error(error);
         })
+}
+
+function displayPokemonInfos(pokemon){
+    console.log(pokemon);
+    gameDisplay.innerHTML = `
+        <div class="card">
+                    <div class="card-pic">
+                        <img src="${pokemon.sprites.front_default}" alt="">
+                    </div>
+                    <div class="card-stats">
+                        <span class="card-name">${pokemon.name}</span>
+                        <span class="first-type">${pokemon.types[0].type.name}</span>
+                        <span class="second-type">${pokemon.types[0].type.name}</span>
+                    </div>
+                    <div class="card-moves">
+                        <span class="card-moves">${pokemon.moves[0].move.name}</span>
+                        <span class="card-moves">${pokemon.moves[1].move.name}</span>
+                        <span class="card-moves">${pokemon.moves[2].move.name}</span>
+                        <span class="card-moves">${pokemon.moves[3].move.name}</span>
+                    </div>
+                </div>
+
+    `
 }
